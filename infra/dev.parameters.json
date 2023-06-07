@@ -1,7 +1,7 @@
 {
   "Parameters": {
     "Environment": "dev",
-    "DynamoDbTableName": "tbes_autorizador_dev",
+    "DynamoDbTableName": "tbes_tokens_dev",
     "RCU": "1",
     "WCU": "1",
     "BillingMode": "PROVISIONED"
