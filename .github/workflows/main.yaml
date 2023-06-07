@@ -1,4 +1,4 @@
-name: Deploy stack - Prod
+name: Deploy infra - Prod
 on:
   push:
     branches: [main]
