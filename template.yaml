@@ -34,8 +34,8 @@ Resources:
       AttributeDefinitions: 
       - AttributeName: "token"
         AttributeType: "S"
-      - AttributeName: "nome"
-        AttributeType: "S"
+      - AttributeName: "expiration_time"
+        AttributeType: "N"
       BillingMode: !Ref BillingMode
       DeletionProtectionEnabled: !Ref DeletionProtectionEnabled
       KeySchema: 
