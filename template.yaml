@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Escola de software - Autorizador - DynamoDb Tokens
+Parameters:
+  DynamoDbTableName:
+    Description: Table Name
+    Type: String
+    Default: tbes_tokens
+  Environment:
+    Description: Environment
+    Type: String
+    Default: "dev"
+  RCU:
+    Description: Read Capacity Unit
+    Type: String
+    Default: "0"
+  WCU:
+    Description: Write Capacity Unit
+    Type: String
+    Default: "0"
+  BillingMode:
+    Description: Billing Mode
+    Type: String
+    Default: "PAY_PER_REQUEST"
+  DeletionProtectionEnabled:
+    Description: Deletion protection
+    Type: String
+    Default: "false"
+
+Resources:
+  AutorizadorDynamoDb:
+    Type: AWS::DynamoDB::Table
+    Properties: 
+      AttributeDefinitions: 
+      - AttributeName: "token"
+        AttributeType: "S"
+      - AttributeName: "nome"
+        AttributeType: "S"
+      BillingMode: !Ref BillingMode
+      DeletionProtectionEnabled: !Ref DeletionProtectionEnabled
+      KeySchema: 
+        - AttributeName: "token"
+          KeyType: "HASH"
+      ProvisionedThroughput: 
+        ReadCapacityUnits: !Ref RCU
+        WriteCapacityUnits: !Ref WCU
+      TableName: !Ref DynamoDbTableName
+      TimeToLiveSpecification:
+        AttributeName: expiration_time
+        Enabled: true
+      Tags: 
+      - Key: Ambiente
+        Value: !Ref Environment
+      - Key: Microservico
+        Value: Autorizador
