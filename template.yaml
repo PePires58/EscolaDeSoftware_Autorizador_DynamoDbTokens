@@ -32,12 +32,12 @@ Resources:
     Type: AWS::DynamoDB::Table
     Properties: 
       AttributeDefinitions: 
-      - AttributeName: "token"
+      - AttributeName: "jwt_token"
         AttributeType: "S"
       BillingMode: !Ref BillingMode
       DeletionProtectionEnabled: !Ref DeletionProtectionEnabled
       KeySchema: 
-        - AttributeName: "token"
+        - AttributeName: "jwt_token"
           KeyType: "HASH"
       ProvisionedThroughput: 
         ReadCapacityUnits: !Ref RCU
